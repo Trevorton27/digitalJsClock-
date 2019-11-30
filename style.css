@@ -1,0 +1,15 @@
+.clock-wrap{
+    margin-top: 30%;
+}
+.clock{
+    height: 120px;
+    width: 600px;
+    background-color: blue;
+    margin: auto 0;
+}
+.date{
+    height: 50px;
+    width: 600px;
+    background-color: slategray;
+    margin: auto 0;
+}
