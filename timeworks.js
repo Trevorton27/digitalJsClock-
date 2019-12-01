@@ -33,12 +33,13 @@ function displayTime() {
     const hour = theTime.getHours();
     const minute = theTime.getMinutes();
     const second = theTime.getSeconds();
-    const theClock = document.querySelector('clock');
-
+    const currentTime = `${hour}:${minute}:${second}`;
+    document.getElementsByClassName("clock")[0].innerHTML = currentTime;
     
-}
+};
 
 displayTime();
+setInterval(displayTime, 1000);
 
 console.log(displayTime());
 
