@@ -25,8 +25,7 @@ const theDay = [
 
 
 
-const todayIs = document.querySelector('date');
-const militaryTime = false;
+const twelveHourTime = false;
 
 function displayTime() {
     const theTime = new Date();
@@ -38,6 +37,23 @@ function displayTime() {
     
 };
 
+function displayDate(){
+    const theDate = new Date();
+    const month = theMonth[theDate.getMonth()];
+    const date = theDate.getDate();
+    const day = theDay[theDate.getDay()];
+    const todayIs = `Today is ${day} ${month} ${date}`;
+/*
+    if(date == 1) {
+        return date + "st";
+    } else if (date == 2) {
+        return date + "nd";
+    } */
+
+    document.getElementsByClassName("date")[0].innerHTML = todayIs;
+}
+
+displayDate();
 displayTime();
 setInterval(displayTime, 1000);
 
