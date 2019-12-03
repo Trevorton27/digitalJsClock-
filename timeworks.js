@@ -59,39 +59,43 @@ const todaysDate = [
 
 
 
-const twelveHourTime = false;
+let twelveHourTime = true;
 
 function displayTime() {
     const theTime = new Date();
     const hour = theTime.getHours();
     const minute = theTime.getMinutes();
     const second = theTime.getSeconds();
+    const amPmHours = hour > 12 ? hour - 12 : hour;
     const twoDigitMinutes = minute < 10 ? minute.innerText = "0" + minute : theTime.getMinutes();
     const twoDigitSeconds = second < 10 ? second.innerText = "0" + second : theTime.getSeconds();
-    const currentTime = `${hour}:${twoDigitMinutes}:${twoDigitSeconds}`;
+    let currentTime = `${hour}:${twoDigitMinutes}:${twoDigitSeconds}`;
     document.getElementsByClassName("clock")[0].innerHTML = currentTime;
-    
+
+    if(twelveHourTime) {
+        currentTime = `${amPmHours}:${twoDigitMinutes}:${twoDigitSeconds}`;
+    } else {
+        twelveHourTime = false;
+    }
 };
+
 
 function displayDate(){
     const theDate = new Date();
     const month = theMonth[theDate.getMonth()];
-    const date = todaysDate[theDate.getDate() - 1];
-    const day = theDay[theDate.getDay()];
+    const date = todaysDate[theDate.getDate() -1];
+    const day = theDay[theDate.getDay() -1];
     const todayIs = `Today is ${day} ${month} ${date}`;
-/*
-    if(date == 1) {
-        return date + "st";
-    } else if (date == 2) {
-        return date + "nd";
-    } */
 
     document.getElementsByClassName("date")[0].innerHTML = todayIs;
 }
 
+document.getElementById("timechange-button").addEventListener("click", function() {
+
+});
 displayDate();
 displayTime();
 setInterval(displayTime, 1000);
 
-console.log(displayTime);
+
 
