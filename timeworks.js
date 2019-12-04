@@ -58,9 +58,10 @@ const todaysDate = [
 ];
 
 
-
+//global variable to set initial time display based on 12hr clock
 let twelveHourTime = true;
 
+//pulls current time from browser via the Date object and concatenates "0" for two digit display of single digit time values also establishes logic for 12 and 24 hour time displays.
 function displayTime() {
     const theTime = new Date();
     const hour = theTime.getHours();
@@ -69,17 +70,20 @@ function displayTime() {
     const amPmHours = hour > 12 ? hour - 12 : hour;
     const twoDigitMinutes = minute < 10 ? minute.innerText = "0" + minute : theTime.getMinutes();
     const twoDigitSeconds = second < 10 ? second.innerText = "0" + second : theTime.getSeconds();
-    let currentTime = `${hour}:${twoDigitMinutes}:${twoDigitSeconds}`;
-    document.getElementsByClassName("clock")[0].innerHTML = currentTime;
+    let currentTime = `${amPmHours}:${twoDigitMinutes}:${twoDigitSeconds}`;
+    let currentMiltaryTime = `${hour}:${twoDigitMinutes}:${twoDigitSeconds}`;
 
     if(twelveHourTime) {
-        currentTime = `${amPmHours}:${twoDigitMinutes}:${twoDigitSeconds}`;
+        document.getElementsByClassName("clock")[0].innerHTML = currentTime;
     } else {
-        twelveHourTime = false;
+        document.getElementsByClassName("clock")[0].innerHTML = currentMiltaryTime;
     }
+    
+
+    
 };
 
-
+//pulls and conficugures data for display of current month, day and date using Date object
 function displayDate(){
     const theDate = new Date();
     const month = theMonth[theDate.getMonth()];
@@ -90,8 +94,13 @@ function displayDate(){
     document.getElementsByClassName("date")[0].innerHTML = todayIs;
 }
 
+//event listener to change between 12/24 hr display via "Click Me" button below clock.
 document.getElementById("timechange-button").addEventListener("click", function() {
-
+    if(twelveHourTime) {
+        twelveHourTime = false;
+    } else {
+        twelveHourTime = true;
+    }
 });
 displayDate();
 displayTime();
