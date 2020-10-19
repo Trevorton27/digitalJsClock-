@@ -101,10 +101,10 @@ timeDisplayButton.textContent = 'Military Time';
 timeDisplayButton.addEventListener('click', function () {
   if (twelveHourTime) {
     twelveHourTime = false;
-    timeDisplayButton.textContent = 'Civilian Time';
+    timeDisplayButton.textContent = 'Click For Civilian Time';
   } else {
     twelveHourTime = true;
-    timeDisplayButton.textContent = 'Military Time';
+    timeDisplayButton.textContent = 'Click For Military Time';
   }
 });
 displayDate();
